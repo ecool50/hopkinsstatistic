@@ -1,3 +1,5 @@
+require(FNN)
+
 # follows the wiki definition of H
 # INPUTS
 #      A dara matrix x
@@ -9,7 +11,6 @@
 #     (2) sum of distances for the random data q
 #     (3) sum of distances for the real (sampled) data w
 hopkins.FNN <- function(x, n, ...) {
-  require(FNN)
   
   N <- nrow(x)
   D <- ncol(x)
@@ -42,7 +43,6 @@ hopkins.FNN <- function(x, n, ...) {
 
 # repeat the Hopkins statistic calculation
 hopkins.repeat <- function(x,n=round(0.1*nrow(x)),nrep=100,...) {
-  require(clustertend)
   hops <- rep(NA, nrep)
   for(i in 1:nrep) hops[i] <- hopkins.FNN(x,n,...)$H
   return(hops)
