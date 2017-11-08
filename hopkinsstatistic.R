@@ -3,7 +3,7 @@ require(FNN)
 # follows the wiki definition of H
 # INPUTS
 #      A dara matrix x
-#      How many points to sample n
+#      How many points to sample n, if n<1 then it is used as proportion
 #      Any other parameters for FNN
 # OUTPUT
 #     A list with  
@@ -14,6 +14,8 @@ hopkins.FNN <- function(x, n, ...) {
   
   N <- nrow(x)
   D <- ncol(x)
+  
+  if(n<1) n <- round(n*N)
   
   stopifnot(n<N)
   
